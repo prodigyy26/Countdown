@@ -7,27 +7,28 @@
   <title>Decimal Weeks Countdown</title>
   <style>
     body {
-      background-color: white;
+      background-color: #121212; /* Dark background */
       font-family: 'Lato', sans-serif;
       text-align: center;
       padding-top: 50px;
     }
 
     .weeks {
-      background: #276FBF;
+      background: #276FBF; /* Bright blue block */
       color: white;
       display: inline-block;
-      padding: 20px 40px;
-      border-radius: 10px;
-      font-size: 2em;
+      padding: 30px 60px;
+      border-radius: 12px;
+      font-size: 1.5em;
       text-transform: uppercase;
       letter-spacing: 2px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
     }
 
     .number {
       font-family: 'Montserrat', sans-serif;
-      font-size: 4em;
-      color: #fff;
+      font-size: 5em;
+      color: white;
     }
   </style>
 </head>
@@ -39,7 +40,7 @@
   </div>
 
   <script>
-    const targetDate = new Date('Feb 01, 2026 00:00:00');
+    const targetDate = new Date('Oct 15, 2024 00:00:00');
 
     const updateCountdown = () => {
       const now = new Date().getTime();
@@ -52,8 +53,9 @@
     };
 
     updateCountdown(); // initial call
-    setInterval(updateCountdown, 1000 * 60 * 60); // update every hour
+    setInterval(updateCountdown, 1000 * 60 * 60); // update hourly
   </script>
 
 </body>
 </html>
+
