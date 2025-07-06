@@ -3,58 +3,83 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:900">
-  <title>Decimal Weeks Countdown</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:900|Lato:400,700">
+  <title>Weeks Countdown</title>
   <style>
-    body {
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
       font-family: 'Lato', sans-serif;
-      text-align: center;
-      padding-top: 50px;
     }
 
-    .weeks {
-      background: #276FBF; /* Bright blue block */
-      color: white;
-      display: inline-block;
-      padding: 30px 60px;
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
+    }
+
+    .counter {
+      background-color: #276FBF; /* blue block */
       border-radius: 12px;
-      font-size: 1.5em;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      padding: 2vw;
+      text-align: center;
+      width: 90%;
+      max-width: 300px;
+      box-sizing: border-box;
     }
 
     .number {
       font-family: 'Montserrat', sans-serif;
-      font-size: 5em;
+      font-size: 12vw;
       color: white;
+      margin: 0;
+    }
+
+    .label {
+      font-size: 4vw;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 0;
+    }
+
+    @media (min-width: 400px) {
+      .number {
+        font-size: 4em;
+      }
+
+      .label {
+        font-size: 1.5em;
+      }
     }
   </style>
 </head>
 <body>
-
-  <div class="weeks">
-    <div id="weeks" class="number"></div>
-    weeks left
+  <div class="container">
+    <div class="counter">
+      <div id="weeks" class="number"></div>
+      <div class="label">Weeks Left</div>
+    </div>
   </div>
 
   <script>
-    const targetDate = new Date('Feb 01, 2026 00:00:00');
+    const targetDate = new Date("Oct 15, 2024 00:00:00");
 
-    const updateCountdown = () => {
+    function updateCountdown() {
       const now = new Date().getTime();
       const diff = targetDate - now;
+      const weeks = Math.max(0, diff / (1000 * 60 * 60 * 24 * 7));
+      document.getElementById("weeks").textContent = weeks.toFixed(2);
+    }
 
-      const weeks = diff / (1000 * 60 * 60 * 24 * 7);
-      const roundedWeeks = weeks.toFixed(2); // 2 decimal places
-
-      document.getElementById("weeks").textContent = roundedWeeks;
-    };
-
-    updateCountdown(); // initial call
+    updateCountdown();
     setInterval(updateCountdown, 1000 * 60 * 60); // update hourly
   </script>
-
 </body>
 </html>
+
 
