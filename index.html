@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:900">
+  <title>Decimal Weeks Countdown</title>
+  <style>
+    body {
+      background-color: white;
+      font-family: 'Lato', sans-serif;
+      text-align: center;
+      padding-top: 50px;
+    }
+
+    .weeks {
+      background: #276FBF;
+      color: white;
+      display: inline-block;
+      padding: 20px 40px;
+      border-radius: 10px;
+      font-size: 2em;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .number {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 4em;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="weeks">
+    <div id="weeks" class="number"></div>
+    weeks left
+  </div>
+
+  <script>
+    const targetDate = new Date('Feb 01, 2026 00:00:00');
+
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+
+      const weeks = diff / (1000 * 60 * 60 * 24 * 7);
+      const roundedWeeks = weeks.toFixed(2); // 2 decimal places
+
+      document.getElementById("weeks").textContent = roundedWeeks;
+    };
+
+    updateCountdown(); // initial call
+    setInterval(updateCountdown, 1000 * 60 * 60); // update every hour
+  </script>
+
+</body>
+</html>
